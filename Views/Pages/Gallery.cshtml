@@ -1,0 +1,100 @@
+﻿@{
+    ViewBag.Title = "Gallery";
+    ViewBag.pTitle = "Gallery";
+    ViewBag.pageTitle = "Pages";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+@model List<Velzon.Models.GalleryCategory>
+
+@section styles{
+    <!-- glightbox css -->
+    <link rel="stylesheet" href="~/assets/libs/glightbox/css/glightbox.min.css">
+    <script src="~/assets/libs/jquery/jquery-3.6.3.min.js"></script>
+}
+
+<div class="row">
+    <div class="col-lg-12">
+        <div class="card" id="searchCard">
+            <div class="card-header">
+                <div class="row justify-content-between gy-3">
+                    <div class="col-lg-12">
+                        <div class="row text-center">
+                            <h3 class="text-dark bold">ศูนย์สมุททานุภาพกองทัพเรือ</h3>
+                            <div class="text-dark fs-13" style="margin-top:-7px;">SEA POWER CENTER ROYAL THAI NAVY</div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <!--end col-->
+</div>
+<!--end row-->
+
+<div class="row">
+    <div class="col-lg-12">
+        <div class="">
+            <div class="card-body">
+                <div class="row">
+                    <div class="col-lg-12">
+                        <div class="text-center">
+                            <ul class="list-inline categories-filter animation-nav" id="filter">
+                                <li class="list-inline-item"><a class="categories active" data-filter="*">All</a></li>
+                                @foreach(var item in Model)
+                                {
+                                    <li class="list-inline-item"><a class="categories" data-filter=".@item.Category">@item.Category</a></li>
+                                }
+
+                                
+                               
+
+                            </ul>
+                        </div>
+
+                        <div class="row gallery-wrapper">
+                            @foreach (var item in Model)
+                            {
+                                @foreach(var image in item.Images){
+                                    <div class="element-item col-xxl-3 col-xl-4 col-sm-6 @item.Category" data-category="@item.Category">
+                                        <div class="gallery-box card">
+                                            <div class="gallery-container">
+                                                <a class="image-popup" href="/images/@item.Category/@image" title="">
+                                                    <img class="gallery-img img-fluid mx-auto" src="~/images/@item.Category/@image" alt="" />
+
+                                                </a>
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <!-- end col -->
+                                }
+                            }
+                        </div>
+                        <!-- end row -->
+
+                    </div>
+                </div>
+                <!-- end row -->
+            </div>
+            <!-- ene card body -->
+        </div>
+        <!-- end card -->
+    </div>
+    <!-- end col -->
+</div>
+<!-- end row -->
+@section scripts{
+
+
+    <script src="~/assets/libs/glightbox/js/glightbox.min.js"></script>
+
+    <!-- isotope-layout -->
+    <script src="~/assets/libs/isotope-layout/isotope.pkgd.min.js"></script>
+
+    <script src="~/assets/js/pages/gallery.init.js"></script>
+
+    <!-- App js -->
+    <script src="~/assets/js/app.js"></script>
+
+
+}

@@ -1,0 +1,24 @@
+﻿<!doctype html>
+<html lang="en" data-layout="horizontal" data-topbar="light" data-sidebar="light" data-sidebar-size="lg" data-sidebar-image="none" data-preloader="disable">
+<head>
+    @await Html.PartialAsync("~/Views/Shared/_title_meta.cshtml")
+    @RenderSection("styles", required: false)
+    @await Html.PartialAsync("~/Views/Shared/_head_css.cshtml")
+</head>
+<body>
+
+    <div id="layout-wrapper">
+
+                    @await Html.PartialAsync("~/Views/Shared/_page_title.cshtml")
+
+                    @RenderBody()
+                </div>
+           
+            @await Html.PartialAsync("~/Views/Shared/_footer.cshtml")
+
+
+    @await Html.PartialAsync("~/Views/Shared/_vendor_scripts.cshtml")
+
+    @RenderSection("scripts", required: false)
+</body>
+</html>
